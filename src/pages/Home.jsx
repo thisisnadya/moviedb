@@ -3,8 +3,8 @@ import Discover from "../components/Discover";
 function Home() {
   return (
     <div>
-      <Popular />
       <Discover />
+      <Popular />
     </div>
   );
 }

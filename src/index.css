@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -21,5 +22,8 @@ code {
 }
 
 h1 {
-  color: #F9DFDC;
+  color: white;
+  font-size: 2rem;
+  letter-spacing: 5px;
+  font-family: 'Playfair Display', sans-serif;
 }

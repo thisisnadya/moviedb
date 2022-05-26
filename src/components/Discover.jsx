@@ -25,8 +25,8 @@ function Discover() {
   };
 
   return (
-    <div>
-      <h1>Discover</h1>
+    <div className="mt-4">
+      <h1 className="py-3">Discover</h1>
       <Splide
         options={{
           perPage: 3,
