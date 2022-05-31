@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/react-splide/css";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
