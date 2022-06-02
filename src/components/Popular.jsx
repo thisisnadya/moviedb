@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
+import { Link } from "react-router-dom";
 
 function Popular() {
   const [trending, setTrending] = useState([]);
@@ -50,13 +51,15 @@ function Popular() {
         {trending.map((item) => (
           <SplideSlide key={item.id}>
             <Card>
-              <p>{item.title}</p>
-              <img
-                // className="img-fluid"
-                src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
-                alt=""
-              />
-              <Gradient />
+              <Link to={"/detail/" + item.id}>
+                <p>{item.title}</p>
+                <img
+                  // className="img-fluid"
+                  src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
+                  alt=""
+                />
+                <Gradient />
+              </Link>
             </Card>
           </SplideSlide>
         ))}

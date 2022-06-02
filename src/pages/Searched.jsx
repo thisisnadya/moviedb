@@ -24,10 +24,12 @@ function Searched() {
       {searched.map((item) => {
         return (
           <Card key={item.id}>
-            <img
-              src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-              alt=""
-            />
+            <Link to={"/detail/" + item.id}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                alt=""
+              />
+            </Link>
           </Card>
         );
       })}
