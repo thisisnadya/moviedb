@@ -10,7 +10,7 @@ function Pages() {
       <Route path="/" element={<Home />} />
       <Route path="/category/:type" element={<MovieSeries />} />
       <Route path="/searched/:search" element={<Searched />} />
-      <Route path="/detail/:id" element={<Detail />} />
+      <Route path="/:media_type/detail/:id" element={<Detail />} />
     </Routes>
   );
 }

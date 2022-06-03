@@ -24,7 +24,7 @@ function MovieSeries() {
       {movieSeries.map((item) => {
         return (
           <Card key={item.id}>
-            <Link to={"/detail/" + item.id}>
+            <Link to={`/${params.type}/detail/${item.id}`}>
               <img
                 src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                 alt=""

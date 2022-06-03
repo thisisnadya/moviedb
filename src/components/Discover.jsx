@@ -48,7 +48,7 @@ function Discover() {
         {discover.map((item) => (
           <SplideSlide key={item.id}>
             <Card>
-              <Link to={"/detail/" + item.id}>
+              <Link to={"/movie/detail/" + item.id}>
                 <p>{item.title}</p>
                 <img
                   // className="img-fluid"
