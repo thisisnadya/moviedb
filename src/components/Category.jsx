@@ -48,7 +48,7 @@ const SLink = styled(NavLink)`
     font-size: 2rem;
   }
   &.active {
-    background-color: brown;
+    background-color: #301b3f;
   }
 `;
 

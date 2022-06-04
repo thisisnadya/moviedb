@@ -9,6 +9,7 @@ function Search() {
   const submitHandler = (e) => {
     e.preventDefault();
     navigate("/searched/" + searchInput);
+    setSearchInput("");
   };
 
   return (
@@ -35,7 +36,7 @@ const Form = styled.form`
     outline: none;
     padding: 0.8rem 4rem;
     width: 50%;
-    background-color: burlywood;
+    background-color: #3c415c;
     border-radius: 1rem;
     color: white;
     font-size: 1.2rem;
