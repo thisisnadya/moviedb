@@ -17,12 +17,13 @@ function Detail() {
     console.log(data);
   };
   return (
-    <Wrapper className="mt-5 d-flex">
+    <Wrapper className="mt-5">
       <img
+        className="img-fluid"
         src={`https://image.tmdb.org/t/p/w342${detail.poster_path}`}
         alt=""
       />
-      <div className="ms-5">
+      <div className="detail">
         {detail.title ? (
           <h1>{detail.title}</h1>
         ) : (
@@ -36,19 +37,41 @@ function Detail() {
 }
 
 const Wrapper = styled.div`
-  /* display: flex;
-  justify-content: center; */
+  display: flex;
+  flex-direction: row;
 
-  h1 {
-    font-size: 4rem;
+  .detail {
+    margin-left: 3rem;
+    h1 {
+      font-size: 4rem;
+    }
+
+    h3 {
+      font-family: sans-serif;
+    }
+
+    p {
+      color: #eeeeee;
+    }
   }
 
-  h3 {
-    font-family: sans-serif;
-  }
+  @media (max-width: 850px) {
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
 
-  p {
-    color: #eeeeee;
+    img {
+      max-height: initial;
+    }
+    .detail {
+      margin: 1rem 0rem;
+      text-align: center;
+      h1 {
+        font-size: 3rem;
+      }
+    }
   }
 `;
 
