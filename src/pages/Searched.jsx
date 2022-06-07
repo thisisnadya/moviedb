@@ -39,11 +39,8 @@ function Searched() {
 
 const Grid = styled.div`
   display: grid;
-  /* grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); */
   grid-template-columns: repeat(auto-fit, 12rem);
   justify-content: center;
-  /* grid-auto-columns: minmax(0, 1fr); */
-  /* grid-auto-flow: column; */
   grid-gap: 3rem;
 `;
 

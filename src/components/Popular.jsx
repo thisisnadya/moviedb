@@ -52,9 +52,14 @@ function Popular() {
           <SplideSlide key={item.id}>
             <Card>
               <Link to={`/${item.media_type}/detail/${item.id}`}>
-                <p>{item.title}</p>
+                {item.title ? (
+                  <p>{item.title}</p>
+                ) : (
+                  <p>{item.original_title}</p>
+                )}
+                {item.name ? <p>{item.name}</p> : <p>{item.original_name}</p>}
                 <img
-                  // className="img-fluid"
+                  className="img-fluid"
                   src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
                   alt=""
                 />

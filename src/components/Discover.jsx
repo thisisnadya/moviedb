@@ -30,19 +30,11 @@ function Discover() {
       <h1 className="py-3">Discover</h1>
       <Splide
         options={{
-          perPage: 3,
+          perPage: 1,
           arrows: true,
           pagination: false,
           drag: "free",
           gap: "3rem",
-          breakpoints: {
-            768: {
-              perPage: 2,
-            },
-            640: {
-              perPage: 1,
-            },
-          },
         }}
       >
         {discover.map((item) => (
@@ -51,8 +43,8 @@ function Discover() {
               <Link to={"/movie/detail/" + item.id}>
                 <p>{item.title}</p>
                 <img
-                  // className="img-fluid"
-                  src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`}
+                  className="img-fluid"
+                  src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
                   alt=""
                 />
                 <Gradient />
@@ -67,7 +59,8 @@ function Discover() {
 
 const Card = styled.div`
   overflow: hidden;
-  min-height: 20rem;
+  min-height: 45rem;
+  height: 100%;
   position: relative;
   border-radius: 1rem;
   img {
