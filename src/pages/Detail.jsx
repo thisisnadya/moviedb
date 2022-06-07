@@ -29,8 +29,12 @@ function Detail() {
         ) : (
           <h1>{detail.original_title}</h1>
         )}
+        {detail.name ? <h1>{detail.name}</h1> : <h1>{detail.original_name}</h1>}
         <h4 className="rate">{detail.vote_average}</h4>
-        <p>{detail.overview}</p>
+        {detail.genres?.map((genre) => (
+          <span key={genre.id}>{genre.name + " | "}</span>
+        ))}
+        <p className="mt-4">{detail.overview}</p>
       </div>
     </Wrapper>
   );
@@ -51,7 +55,13 @@ const Wrapper = styled.div`
     }
 
     p {
+      font-size: 1.3rem;
       color: #eeeeee;
+      display: inline-block;
+    }
+    span {
+      color: white;
+      font-size: 1.2rem;
     }
   }
 
