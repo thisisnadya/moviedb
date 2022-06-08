@@ -14,11 +14,11 @@ function HomeNav() {
 }
 
 const Nav = styled.div`
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
-  text-align: center;
+  /* text-align: center; */
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   a {
     color: white;

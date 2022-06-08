@@ -8,8 +8,10 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <HomeNav />
-        <Search />
+        <div className="mynav d-flex bg-success">
+          <HomeNav />
+          <Search />
+        </div>
         <Category />
         <Pages />
       </div>

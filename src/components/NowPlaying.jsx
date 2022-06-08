@@ -26,7 +26,7 @@ function NowPlaying() {
   };
 
   return (
-    <div className="mt-4">
+    <Wrapper>
       <h1 className="py-3">Now Playing</h1>
       <Splide
         options={{
@@ -62,9 +62,13 @@ function NowPlaying() {
           </SplideSlide>
         ))}
       </Splide>
-    </div>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  margin: 4rem 0;
+`;
 
 const Card = styled.div`
   overflow: hidden;

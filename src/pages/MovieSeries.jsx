@@ -1,27 +1,49 @@
 import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Loading from "../components/Loading";
 
 function MovieSeries() {
   let params = useParams();
   const [movieSeries, setMovieSeries] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getMovieSeries(params.type);
   }, [params.type]);
 
   const getMovieSeries = async (type) => {
-    const data = await fetch(
-      `https://api.themoviedb.org/3/discover/${type}?api_key=${process.env.REACT_APP_API_KEY}&page=1`
-    );
-    const result = await data.json();
-    setMovieSeries(result.results);
-    console.log(result.results);
+    setIsLoading(true);
+    try {
+      const data = await fetch(
+        `https://api.themoviedb.org/3/discover/${type}?api_key=${process.env.REACT_APP_API_KEY}&page=1`
+      );
+      const result = await data.json();
+      setMovieSeries(result.results);
+      console.log(result.results);
+    } catch (err) {}
+    setIsLoading(false);
   };
 
   return (
     <Grid className="mt-5">
-      {movieSeries.map((item) => {
+      {isLoading ? (
+        <Loading />
+      ) : (
+        movieSeries.map((item) => {
+          return (
+            <Card key={item.id}>
+              <Link to={`/${params.type}/detail/${item.id}`}>
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                  alt={item.title}
+                />
+              </Link>
+            </Card>
+          );
+        })
+      )}
+      {/* {movieSeries.map((item) => {
         return (
           <Card key={item.id}>
             <Link to={`/${params.type}/detail/${item.id}`}>
@@ -32,7 +54,7 @@ function MovieSeries() {
             </Link>
           </Card>
         );
-      })}
+      })} */}
     </Grid>
   );
 }

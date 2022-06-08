@@ -26,7 +26,7 @@ function DiscoverTV() {
   };
 
   return (
-    <div className="mt-4">
+    <Wrapper>
       <h1 className="py-3">Top Picks TV Series</h1>
       <Splide
         options={{
@@ -61,10 +61,13 @@ function DiscoverTV() {
           </SplideSlide>
         ))}
       </Splide>
-    </div>
+    </Wrapper>
   );
 }
 
+const Wrapper = styled.div`
+  margin: 4rem 0;
+`;
 const Card = styled.div`
   overflow: hidden;
   min-height: 20rem;

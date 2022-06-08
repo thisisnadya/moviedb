@@ -89,6 +89,7 @@ const Card = styled.div`
       font-size: 4rem;
     }
     p {
+      font-weight: 300;
       font-size: 1rem;
       opacity: 0.5;
       letter-spacing: 1px;
