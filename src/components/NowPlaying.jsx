@@ -4,41 +4,38 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import { Link } from "react-router-dom";
 
-function Popular() {
-  const [trending, setTrending] = useState([]);
+function NowPlaying() {
+  const [nowPlaying, setNowPlaying] = useState([]);
   useEffect(() => {
-    getTrending();
+    getMovies();
   }, []);
-  const getTrending = async () => {
-    const check = localStorage.getItem("trending");
+  const getMovies = async () => {
+    const check = localStorage.getItem("nowPlaying");
 
     if (check) {
-      setTrending(JSON.parse(check));
+      setNowPlaying(JSON.parse(check));
     } else {
       const data = await fetch(
-        `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`
+        `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
       );
       const result = await data.json();
-      localStorage.setItem("trending", JSON.stringify(result.results));
-      setTrending(result.results);
+      localStorage.setItem("nowPlaying", JSON.stringify(result.results));
+      setNowPlaying(result.results);
       console.log(result.results);
     }
   };
 
   return (
-    <Wrapper>
-      <h1 className="py-3">Trending</h1>
+    <div className="mt-4">
+      <h1 className="py-3">Now Playing</h1>
       <Splide
         options={{
-          perPage: 5,
+          perPage: 6,
           arrows: true,
           pagination: false,
           drag: "free",
           gap: "3rem",
           breakpoints: {
-            1600: {
-              perPage: 4,
-            },
             1200: {
               perPage: 3,
             },
@@ -51,33 +48,30 @@ function Popular() {
           },
         }}
       >
-        {trending.map((item) => (
+        {nowPlaying.map((item) => (
           <SplideSlide key={item.id}>
             <Card>
-              <Link to={`/${item.media_type}/detail/${item.id}`}>
+              <Link to={"/movie/detail/" + item.id}>
                 <img
                   className="img-fluid"
                   src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                  alt={item.title}
+                  alt=""
                 />
               </Link>
             </Card>
           </SplideSlide>
         ))}
       </Splide>
-    </Wrapper>
+    </div>
   );
 }
 
-const Wrapper = styled.div`
-  margin: 4rem 0rem;
-`;
-
 const Card = styled.div`
   overflow: hidden;
-  min-height: 20rem;
+  height: 100%;
   position: relative;
   border-radius: 1rem;
+  min-height: 20rem;
   img {
     border-radius: 1rem;
     width: 100%;
@@ -85,4 +79,4 @@ const Card = styled.div`
   }
 `;
 
-export default Popular;
+export default NowPlaying;

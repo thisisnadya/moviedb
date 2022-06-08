@@ -12,7 +12,7 @@ function MovieSeries() {
 
   const getMovieSeries = async (type) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/discover/${type}?api_key=${process.env.REACT_APP_API_KEY}`
+      `https://api.themoviedb.org/3/discover/${type}?api_key=${process.env.REACT_APP_API_KEY}&page=1`
     );
     const result = await data.json();
     setMovieSeries(result.results);

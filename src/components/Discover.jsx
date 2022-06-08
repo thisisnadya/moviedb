@@ -41,11 +41,14 @@ function Discover() {
           <SplideSlide key={item.id}>
             <Card>
               <Link to={"/movie/detail/" + item.id}>
-                <p>{item.title}</p>
+                <div className="overview">
+                  <h2>{item.title}</h2>
+                  <p>{item.overview}</p>
+                </div>
                 <img
                   className="img-fluid"
                   src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
-                  alt=""
+                  alt={item.title}
                 />
                 <Gradient />
               </Link>
@@ -71,21 +74,36 @@ const Card = styled.div`
     height: 100%;
     object-fit: cover;
   }
-  p {
+  .overview {
     position: absolute;
+    font-family: "Heebo", sans-serif;
     z-index: 10;
-    left: 50%;
     bottom: 0%;
-    transform: translate(-50%, 0%);
+    padding: 1rem 5rem;
     color: white;
-    width: 100%;
-    text-align: center;
-    font-weight: 600;
-    font-size: 1.5rem;
-    height: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 80%;
+    font-weight: 500;
+    height: 45%;
+    /* background-color: green; */
+    h2 {
+      font-size: 4rem;
+    }
+    p {
+      font-size: 1rem;
+      opacity: 0.5;
+      letter-spacing: 1px;
+    }
+    @media (max-width: 968px) {
+      text-align: center;
+      height: 30%;
+      width: 100%;
+      h2 {
+        font-size: 2.5rem;
+      }
+      p {
+        display: none;
+      }
+    }
   }
 `;
 
@@ -94,7 +112,7 @@ const Gradient = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
 `;
 
 export default Discover;

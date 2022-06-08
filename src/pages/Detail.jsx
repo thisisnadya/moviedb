@@ -25,14 +25,14 @@ function Detail() {
       />
       <div className="detail">
         {detail.title ? (
-          <h1>{detail.title}</h1>
+          <h2>{detail.title}</h2>
         ) : (
-          <h1>{detail.original_title}</h1>
+          <h2>{detail.original_title}</h2>
         )}
-        {detail.name ? <h1>{detail.name}</h1> : <h1>{detail.original_name}</h1>}
+        {detail.name ? <h2>{detail.name}</h2> : <h2>{detail.original_name}</h2>}
         <h4 className="rate">{detail.vote_average}</h4>
         {detail.genres?.map((genre) => (
-          <span key={genre.id}>{genre.name + " | "}</span>
+          <span key={genre.id}>{genre.name}</span>
         ))}
         <p className="mt-4">{detail.overview}</p>
       </div>
@@ -44,9 +44,14 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
 
+  img {
+    border-radius: 1rem;
+  }
+
   .detail {
     margin-left: 3rem;
-    h1 {
+    h2 {
+      color: white;
       font-size: 4rem;
     }
 
@@ -54,6 +59,9 @@ const Wrapper = styled.div`
       font-family: sans-serif;
     }
 
+    h4 {
+      color: #b4afaf;
+    }
     p {
       font-size: 1.3rem;
       color: #eeeeee;
@@ -62,6 +70,11 @@ const Wrapper = styled.div`
     span {
       color: white;
       font-size: 1.2rem;
+      display: inline-block;
+      border: 1px solid white;
+      border-radius: 3rem;
+      padding: 0.5rem 1rem;
+      margin: 0.7rem 1rem 0.7rem 0rem;
     }
   }
 

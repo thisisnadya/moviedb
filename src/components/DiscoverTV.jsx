@@ -88,11 +88,12 @@ const Card = styled.div`
     width: 100%;
     text-align: center;
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 2rem;
     height: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: "Heebo", sans-serif;
   }
 `;
 

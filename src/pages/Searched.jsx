@@ -27,7 +27,7 @@ function Searched() {
             <Link to={`/${item.media_type}/detail/${item.id}`}>
               <img
                 src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                alt=""
+                alt={item.title}
               />
             </Link>
           </Card>
