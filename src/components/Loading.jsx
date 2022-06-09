@@ -15,7 +15,7 @@ function Loading() {
 
 const Load = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,8 +39,8 @@ const Load = styled.div`
   }
   .text {
     margin: 1rem 0rem;
-    font-size: 1.2rem;
-    letter-spacing: 2px;
+    font-size: 2rem;
+    letter-spacing: 1px;
     color: white;
   }
 

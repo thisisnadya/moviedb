@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { GiPopcorn } from "react-icons/gi";
 
 function HomeNav() {
   return (
@@ -8,7 +7,6 @@ function HomeNav() {
       <Link to={"/"}>
         <h3>showtime</h3>
       </Link>
-      <GiPopcorn />
     </Nav>
   );
 }
@@ -18,12 +16,7 @@ const Nav = styled.div`
   display: flex;
   align-items: center;
   a {
-    color: white;
     text-decoration: none;
-  }
-  svg {
-    font-size: 2rem;
-    color: white;
   }
 `;
 

@@ -84,7 +84,6 @@ const Card = styled.div`
     width: 80%;
     font-weight: 500;
     height: 45%;
-    /* background-color: green; */
     h2 {
       font-size: 4rem;
     }
