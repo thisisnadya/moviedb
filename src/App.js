@@ -8,7 +8,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <div className="mynav d-flex bg-success">
+        <div className="mynav d-flex">
           <HomeNav />
           <Search />
         </div>

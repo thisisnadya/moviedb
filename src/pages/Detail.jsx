@@ -5,23 +5,30 @@ import styled from "styled-components";
 function Detail() {
   let params = useParams();
   const [detail, setDetail] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     getDetail(params.media_type, params.id);
   }, [params.id]);
+
   const getDetail = async (type, id) => {
-    const api = await fetch(
-      `https://api.themoviedb.org/3/${type}/${id}?api_key=${process.env.REACT_APP_API_KEY}`
-    );
-    const data = await api.json();
-    setDetail(data);
-    console.log(data);
+    setIsLoading(true);
+    try {
+      const api = await fetch(
+        `https://api.themoviedb.org/3/${type}/${id}?api_key=${process.env.REACT_APP_API_KEY}`
+      );
+      const data = await api.json();
+      setDetail(data);
+      console.log(data);
+    } catch (e) {}
+    setIsLoading(false);
   };
   return (
     <Wrapper className="mt-5">
       <img
         className="img-fluid"
         src={`https://image.tmdb.org/t/p/w342${detail.poster_path}`}
-        alt=""
+        alt={detail.title}
       />
       <div className="detail">
         {detail.title ? (

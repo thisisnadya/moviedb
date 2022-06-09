@@ -15,6 +15,7 @@ function Loading() {
 
 const Load = styled.div`
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,8 +24,8 @@ const Load = styled.div`
     display: flex;
   }
   .ball {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background-color: white;
     margin-right: 10px;
@@ -37,6 +38,9 @@ const Load = styled.div`
     animation-delay: 0.1s;
   }
   .text {
+    margin: 1rem 0rem;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
     color: white;
   }
 

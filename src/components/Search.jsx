@@ -34,20 +34,20 @@ const Form = styled.form`
     margin: 0 auto;
     border: none;
     outline: none;
-    padding: 0.8rem 4rem;
-    width: 50%;
+    padding: 0.5rem 3rem;
+    width: 100%;
     background-color: #3c415c;
-    border-radius: 1rem;
+    border-radius: 2rem;
     color: white;
     font-size: 1.2rem;
   }
   svg {
     position: absolute;
     top: 50%;
-    left: 25%;
+    left: 0%;
     transform: translate(100%, -50%);
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 `;
 
