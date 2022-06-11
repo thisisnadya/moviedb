@@ -29,12 +29,11 @@ h1 {
   font-size: 2rem;
   letter-spacing: 3px;
   font-weight: 500;
-  font-family: 'Josefin Sans', sans-serif;
 }
 
 h3 {
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: 700;
   background: linear-gradient(90deg, hsla(225, 40%, 54%, 1) 0%, hsla(284, 75%, 54%, 1) 100%);
   -webkit-text-fill-color: transparent;

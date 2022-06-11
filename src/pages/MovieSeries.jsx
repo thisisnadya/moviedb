@@ -16,7 +16,7 @@ function MovieSeries() {
     setIsLoading(true);
     try {
       const data = await fetch(
-        `https://api.themoviedb.org/3/discover/${type}?api_key=${process.env.REACT_APP_API_KEY}&page=1`
+        `https://api.themoviedb.org/3/discover/${type}?api_key=${process.env.REACT_APP_API_KEY}`
       );
       const result = await data.json();
       setMovieSeries(result.results);
@@ -43,18 +43,6 @@ function MovieSeries() {
           );
         })
       )}
-      {/* {movieSeries.map((item) => {
-        return (
-          <Card key={item.id}>
-            <Link to={`/${params.type}/detail/${item.id}`}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                alt=""
-              />
-            </Link>
-          </Card>
-        );
-      })} */}
     </Grid>
   );
 }
