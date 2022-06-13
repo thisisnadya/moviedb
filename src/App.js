@@ -3,6 +3,7 @@ import Pages from "./pages/Pages";
 import { BrowserRouter } from "react-router-dom";
 import Search from "./components/Search";
 import HomeNav from "./components/HomeNav";
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Search />
         </Nav>
         <Pages />
+        <Footer/> 
       </div>
     </BrowserRouter>
   );
