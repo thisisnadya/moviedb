@@ -6,12 +6,13 @@ import { Link } from "react-router-dom";
 
 function Similar({ media, id }) {
   const [similar, setSimilar] = useState([]);
+  console.log(media, id);
   useEffect(() => {
     getSimilar(media, id);
-  }, []);
-  const getSimilar = async (media, id) => {
+  }, [media, id]);
+  const getSimilar = async (type, id) => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/${media}/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}`
+      `https://api.themoviedb.org/3/${type}/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}`
     );
     const result = await data.json();
     setSimilar(result.results);

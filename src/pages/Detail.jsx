@@ -58,7 +58,7 @@ function Detail() {
               <p className="mt-4">{detail.overview}</p>
             </div>
           </Wrapper>
-          <Similar media={params.media_type} id={params.id}></Similar>
+          <Similar media={params.media_type} id={params.id} />
         </div>
       )}
     </div>
