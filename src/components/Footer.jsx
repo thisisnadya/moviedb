@@ -11,7 +11,6 @@ function Footer() {
 
 const SFooter = styled.div`
   margin-top: 3rem;
-  padding: 1.5rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 `;

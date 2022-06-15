@@ -7,16 +7,17 @@ function MovieSeries() {
   let params = useParams();
   const [movieSeries, setMovieSeries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     getMovieSeries(params.type);
-  }, [params.type]);
+  }, [params.type, page]);
 
   const getMovieSeries = async (type) => {
     setIsLoading(true);
     try {
       const data = await fetch(
-        `https://api.themoviedb.org/3/discover/${type}?api_key=${process.env.REACT_APP_API_KEY}`
+        `https://api.themoviedb.org/3/discover/${type}?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`
       );
       const result = await data.json();
       setMovieSeries(result.results);
@@ -26,24 +27,27 @@ function MovieSeries() {
   };
 
   return (
-    <Grid className="mt-5">
-      {isLoading ? (
-        <Loading />
-      ) : (
-        movieSeries.map((item) => {
-          return (
-            <Card key={item.id}>
-              <Link to={`/${params.type}/detail/${item.id}`}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                  alt={item.title}
-                />
-              </Link>
-            </Card>
-          );
-        })
-      )}
-    </Grid>
+    <div>
+      <Grid className="mt-5">
+        {isLoading ? (
+          <Loading />
+        ) : (
+          movieSeries.map((item) => {
+            return (
+              <Card key={item.id}>
+                <Link to={`/${params.type}/detail/${item.id}`}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                    alt={item.title}
+                  />
+                </Link>
+              </Card>
+            );
+          })
+        )}
+      </Grid>
+      <NextPage onClick={() => setPage(page + 1)}>Show more</NextPage>
+    </div>
   );
 }
 
@@ -65,6 +69,17 @@ const Card = styled.div`
   h4 {
     text-align: center;
     padding: 1rem;
+  }
+`;
+
+const NextPage = styled.p`
+  font-size: 1rem;
+  color: white;
+  text-align: right;
+  text-decoration: underline;
+  cursor: pointer;
+  &:hover {
+    color: #797575;
   }
 `;
 

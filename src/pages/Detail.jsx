@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Similar from "../components/Similar";
 import styled from "styled-components";
 import Loading from "../components/Loading";
 
@@ -29,30 +30,33 @@ function Detail() {
       {isLoading ? (
         <Loading />
       ) : (
-        <Wrapper className="mt-5">
-          <img
-            className="img-fluid"
-            src={`https://image.tmdb.org/t/p/w342${detail.poster_path}`}
-            alt={detail.title}
-          />
-          <div className="detail">
-            {detail.title ? (
-              <h2>{detail.title}</h2>
-            ) : (
-              <h2>{detail.original_title}</h2>
-            )}
-            {detail.name ? (
-              <h2>{detail.name}</h2>
-            ) : (
-              <h2>{detail.original_name}</h2>
-            )}
-            <h4 className="rate">{detail.vote_average}</h4>
-            {detail.genres?.map((genre) => (
-              <span key={genre.id}>{genre.name}</span>
-            ))}
-            <p className="mt-4">{detail.overview}</p>
-          </div>
-        </Wrapper>
+        <div>
+          <Wrapper className="mt-5">
+            <img
+              className="img-fluid"
+              src={`https://image.tmdb.org/t/p/w342${detail.poster_path}`}
+              alt={detail.title}
+            />
+            <div className="detail">
+              {detail.title ? (
+                <h2>{detail.title}</h2>
+              ) : (
+                <h2>{detail.original_title}</h2>
+              )}
+              {detail.name ? (
+                <h2>{detail.name}</h2>
+              ) : (
+                <h2>{detail.original_name}</h2>
+              )}
+              <h4 className="rate">{detail.vote_average}</h4>
+              {detail.genres?.map((genre) => (
+                <span key={genre.id}>{genre.name}</span>
+              ))}
+              <p className="mt-4">{detail.overview}</p>
+            </div>
+          </Wrapper>
+          <Similar media={params.media_type} id={params.id}></Similar>
+        </div>
       )}
     </div>
   );

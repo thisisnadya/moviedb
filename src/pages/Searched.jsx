@@ -7,15 +7,17 @@ function Searched() {
   const params = useParams();
   const [searched, setSearched] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [page, setPage] = useState(1);
+
   useEffect(() => {
     getSearchedList(params.search);
-  }, [params.search]);
+  }, [params.search, page]);
 
   const getSearchedList = async (title) => {
     setIsLoading(true);
     try {
       const api = await fetch(
-        `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_API_KEY}&query=${title}`
+        `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_API_KEY}&query=${title}&page=${page}`
       );
       const data = await api.json();
       setSearched(data.results);
@@ -44,6 +46,7 @@ function Searched() {
           })}
         </Grid>
       )}
+      <NextPage onClick={() => setPage(page + 1)}>Next Page</NextPage>
     </div>
   );
 }
@@ -67,6 +70,18 @@ const Card = styled.div`
   h4 {
     text-align: center;
     padding: 1rem;
+  }
+`;
+
+const NextPage = styled.p`
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: white;
+  text-align: right;
+  text-decoration: underline;
+  cursor: pointer;
+  &:hover {
+    color: #797575;
   }
 `;
 
