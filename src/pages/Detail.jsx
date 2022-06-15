@@ -39,7 +39,10 @@ function Detail() {
             />
             <div className="detail">
               {detail.title ? (
-                <h2>{detail.title}</h2>
+                <h2>{`${detail.title} (${detail.release_date.substr(
+                  0,
+                  4
+                )})`}</h2>
               ) : (
                 <h2>{detail.original_title}</h2>
               )}

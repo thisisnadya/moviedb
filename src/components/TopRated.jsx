@@ -4,23 +4,29 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import { Link } from "react-router-dom";
 
-function Similar({ media, id }) {
-  const [similar, setSimilar] = useState([]);
+function TopRated() {
+  const [topRated, setTopRated] = useState([]);
   useEffect(() => {
-    getSimilar(media, id);
+    getTopRated();
   }, []);
-  const getSimilar = async (media, id) => {
-    const data = await fetch(
-      `https://api.themoviedb.org/3/${media}/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}`
-    );
-    const result = await data.json();
-    setSimilar(result.results);
-    console.log(result.results);
+  const getTopRated = async () => {
+    const check = localStorage.getItem("top_rated");
+
+    if (check) {
+      setTopRated(JSON.parse(check));
+    } else {
+      const data = await fetch(
+        `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}`
+      );
+      const result = await data.json();
+      localStorage.setItem("top_rated", JSON.stringify(result.results));
+      setTopRated(result.results);
+    }
   };
 
   return (
-    <SimWrapper>
-      <h1 className="py-3">Similar Shows</h1>
+    <Wrapper>
+      <h1 className="py-3">Top Rated Movies</h1>
       <Splide
         options={{
           perPage: 5,
@@ -44,10 +50,10 @@ function Similar({ media, id }) {
           },
         }}
       >
-        {similar.map((item) => (
+        {topRated.map((item) => (
           <SplideSlide key={item.id}>
             <Card>
-              <Link to={`/${media}/detail/${item.id}`}>
+              <Link to={`movie/detail/${item.id}`}>
                 <img
                   className="img-fluid"
                   src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
@@ -58,11 +64,11 @@ function Similar({ media, id }) {
           </SplideSlide>
         ))}
       </Splide>
-    </SimWrapper>
+    </Wrapper>
   );
 }
 
-const SimWrapper = styled.div`
+const Wrapper = styled.div`
   margin: 4rem 0rem;
 `;
 
@@ -78,4 +84,4 @@ const Card = styled.div`
   }
 `;
 
-export default Similar;
+export default TopRated;
