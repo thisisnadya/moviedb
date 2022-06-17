@@ -21,7 +21,7 @@ function Discover() {
       const result = await data.json();
       localStorage.setItem("discover", JSON.stringify(result.results));
       setDiscover(result.results);
-      console.log(result.results);
+      console.log(result);
     }
   };
 
