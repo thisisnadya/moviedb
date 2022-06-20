@@ -56,6 +56,11 @@ function Detail() {
                 <span key={genre.id}>{genre.name}</span>
               ))}
               <p className="mt-4">{detail.overview}</p>
+              {params.media_type === "tv" ? (
+                <p>{`Number of Seasons: ${detail.seasons.length}`}</p>
+              ) : (
+                ""
+              )}
             </div>
           </Wrapper>
           <Similar media={params.media_type} id={params.id} />
