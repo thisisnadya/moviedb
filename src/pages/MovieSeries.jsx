@@ -22,7 +22,6 @@ function MovieSeries() {
       );
       const result = await data.json();
       setMovieSeries(result.results);
-      console.log(result.results);
     } catch (err) {}
     setIsLoading(false);
   };

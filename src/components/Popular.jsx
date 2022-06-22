@@ -21,7 +21,6 @@ function Popular() {
       const result = await data.json();
       localStorage.setItem("trending", JSON.stringify(result.results));
       setTrending(result.results);
-      console.log(result.results);
     }
   };
 

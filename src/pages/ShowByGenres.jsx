@@ -22,7 +22,6 @@ function ShowByGenres() {
       );
       const result = await data.json();
       setResultsByGenre(result.results);
-      console.log(result.results);
     } catch (err) {}
     setIsLoading(false);
   };

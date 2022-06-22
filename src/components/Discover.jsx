@@ -21,12 +21,11 @@ function Discover() {
       const result = await data.json();
       localStorage.setItem("discover", JSON.stringify(result.results));
       setDiscover(result.results);
-      console.log(result);
     }
   };
 
   return (
-    <div className="mt-4">
+    <div>
       <h1 className="py-3">Discover</h1>
       <Splide
         options={{

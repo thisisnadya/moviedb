@@ -8,10 +8,25 @@ function Detail() {
   let params = useParams();
   const [detail, setDetail] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [seasonNumber, setSeasonNumber] = useState();
+  const [detailSeason, setDetailSeason] = useState({});
 
   useEffect(() => {
     getDetail(params.media_type, params.id);
   }, [params.id]);
+
+  useEffect(() => {
+    getDetailSeason(params.id, seasonNumber);
+  }, [seasonNumber]);
+
+  const getDetailSeason = async (id, number) => {
+    const api = await fetch(
+      `https://api.themoviedb.org/3/tv/${id}/season/${number}?api_key=${process.env.REACT_APP_API_KEY}`
+    );
+    const data = await api.json();
+    setDetailSeason(data);
+    console.log(data);
+  };
 
   const getDetail = async (type, id) => {
     setIsLoading(true);
@@ -57,7 +72,17 @@ function Detail() {
               ))}
               <p className="mt-4">{detail.overview}</p>
               {params.media_type === "tv" ? (
-                <p>{`Number of Seasons: ${detail.seasons.length}`}</p>
+                <div>
+                  {detail.seasons.map((season) => (
+                    <Button
+                      className={
+                        season.season_number === seasonNumber ? "active" : ""
+                      }
+                      onClick={() => setSeasonNumber(season.season_number)}
+                    >{`Season ${season.season_number}`}</Button>
+                  ))}
+                  {/* <p>{detail.seasons[seasonNumber - 1].overview}</p> */}
+                </div>
               ) : (
                 ""
               )}
@@ -72,7 +97,6 @@ function Detail() {
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
 
   img {
     border-radius: 1rem;
@@ -127,6 +151,20 @@ const Wrapper = styled.div`
         font-size: 3rem;
       }
     }
+  }
+`;
+
+const Button = styled.button`
+  padding: 0.7rem 1rem;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  margin-right: 1rem;
+  &.active {
+    background-color: white;
+    color: black;
+    border: 1px solid grey;
   }
 `;
 

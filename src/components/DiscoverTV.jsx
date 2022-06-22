@@ -21,7 +21,6 @@ function DiscoverTV() {
       const result = await data.json();
       localStorage.setItem("discoverTV", JSON.stringify(result.results));
       setDiscover(result.results);
-      console.log(result.results);
     }
   };
 

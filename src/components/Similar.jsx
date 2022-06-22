@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 function Similar({ media, id }) {
   const [similar, setSimilar] = useState([]);
-  console.log(media, id);
   useEffect(() => {
     getSimilar(media, id);
   }, [media, id]);
@@ -16,7 +15,6 @@ function Similar({ media, id }) {
     );
     const result = await data.json();
     setSimilar(result.results);
-    console.log(result.results);
   };
 
   return (

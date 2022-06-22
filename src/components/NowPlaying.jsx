@@ -21,7 +21,6 @@ function NowPlaying() {
       const result = await data.json();
       localStorage.setItem("nowPlaying", JSON.stringify(result.results));
       setNowPlaying(result.results);
-      console.log(result.results);
     }
   };
 
